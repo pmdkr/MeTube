@@ -28,7 +28,7 @@ const WatchPage=()=>{
         <div className="px-5">
             <iframe width="816"
              height="416" 
-             className="rounded-2xl shadow-2xl"
+             className="rounded-2xl shadow-2xl ml-10"
             src={"https://www.youtube.com/embed/"+searchParams.get("v")} 
             title="Janiye Mashup | Jay Guldekar | Vishal Mishra Mashup | Naseeb Se" 
             frameBorder="0" 

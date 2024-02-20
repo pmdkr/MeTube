@@ -3,9 +3,11 @@ import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import { useState } from "react";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+// import dotenv from  'dotenv'
 
 const VideoContainer = ()=>{
     // console.log(process.env.REACT_APP_MY_API_KEY);
+    const key=process.env.REACT_APP_MY_API_KEY;
     const[videos, setVideos] = useState([]);
     
     useEffect(()=>{
@@ -16,9 +18,7 @@ const VideoContainer = ()=>{
     },[]);
 
     const getVideos= async()=>{
-        const data = await fetch(YOUTUBE_VIDEOS_API);
-        // const url=(YOUTUBE_VIDEOS_API);
-        // console.log(url);
+        const data = await fetch(YOUTUBE_VIDEOS_API+`${key}`);
         const json = await data.json();
         setVideos(json.items);
         console.log(json.items);
