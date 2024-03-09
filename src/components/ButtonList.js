@@ -4,7 +4,7 @@ const ButtonList = ()=>{
     
 
     return(
-        <div className="flex">
+        <div className="flex justify-center">
           {btnList.map((btn)=>
           <Button key={btn.toString()}
           name={btn}/>)}
