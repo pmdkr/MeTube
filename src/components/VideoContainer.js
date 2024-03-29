@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
-import { useState } from "react";
+// import { useState } from "react";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ const VideoContainer = () => {
     const key = process.env.REACT_APP_MY_API_KEY;
     // const[videos, setVideos] = useState([]);
     const videos = useSelector((store) => store.video.videos);
-    // console.log(videos);
+
 
     useEffect(() => {
         getVideos();
@@ -32,9 +32,9 @@ const VideoContainer = () => {
     return (
         <div className="flex flex-wrap justify-center">
             {
-                videos[0]?.video?.map((v) => (
-                    <Link to={"/watch?v=" + v.id} key={v.id}>
-                        <VideoCard info={v} />
+                videos[0]?.video?.map((vid) => (
+                    <Link to={"/watch?v=" + vid.id} key={vid.id}>
+                        <VideoCard info={vid} />
                     </Link>))
             }
         </div>

@@ -5,13 +5,17 @@ import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from './components/MainContainer';
 import WatchPage from './components/WatchPage';
+import SearchKeywordPage from './components/SearchKeywordPage.js';
 import Error from './components/Error';
 
 function App() {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body />,
+      element: <>
+        <Header />
+        <Body />
+      </>,
       children: [
         {
           path: "/",
@@ -22,6 +26,10 @@ function App() {
           path: "/watch",
           element: <WatchPage />,
           errorElement: <Error />
+        },
+        {
+          path: "/search",
+          element: <SearchKeywordPage />
         }
       ],
       errorElement: <Error />
@@ -33,9 +41,7 @@ function App() {
 
 
       <div className="App">
-        
-          <Header />
-          <RouterProvider router={appRouter} />
+        <RouterProvider router={appRouter} />
 
         {/* {
         Header

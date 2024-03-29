@@ -3,17 +3,24 @@ import { toggleMenu } from "../utils/appSlice";
 import { useEffect, useState } from "react";
 import { SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import SuggestionList from "./SuggestionList";
+import { openSuggestion } from "../utils/suggestionSlice";
+import { Link } from "react-router-dom";
+
 const Header = () => {
     const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
-    const [showSuggestion, setShowSuggestion] = useState(false);
+    // const [showSuggestion, setShowSuggestion] = useState(false);
 
     const toggleMenuhandler = () => {
         dispatch(toggleMenu());
     }
-    const searchCache = useSelector((store) => store.search);
 
+    const suggestionListHandler=()=>{
+        dispatch(openSuggestion());
+    }
+    const searchCache = useSelector((store) => store.search);
     /**
      * searchCache ={
      *   "iphone": ["iphone","iphone 11","iphone 14"]
@@ -47,9 +54,20 @@ const Header = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery]);
 
+    // const fetchResult=(s)=> {
+    //     // const data= await fetch(SEARCH_RESULT+"?q="+{searchText}+"&key=" + key);
+    //     // const json =await data.json();
+    //     // console.log(json);
+    //     console.log("item is clicked")
+    //     dispatch(setSearchTerm(s));
+    //     console.log(s);
+
+
+    // }
+
 
     const getSearchSuggestion = async () => {
-        console.log("API CALL-" + searchQuery);
+        // console.log("API CALL-" + searchQuery);
         const data = await fetch(SEARCH_API + searchQuery);
         const json = await data.json();
         // console.log(json[1]);
@@ -75,11 +93,11 @@ const Header = () => {
                     alt="hamberger"
                     src="https://cdn.icon-icons.com/icons2/2596/PNG/512/hamburger_button_menu_icon_155296.png"
                 />
-                <a href="/">
+                <Link to="/">
                     <img className="h-8" alt="youtubeIcon"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1280px-YouTube_Logo_2017.svg.png"
                     />
-                </a>
+                </Link>
 
 
             </div>
@@ -90,8 +108,8 @@ const Header = () => {
                         name="search"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        onFocus={() => setShowSuggestion(true)}
-                        onBlur={() => setShowSuggestion(false)}
+                        onFocus={suggestionListHandler}
+                        // onBlur={() => setShowSuggestion(false)}
                     />
                     <button className="border border-gray-400 rounded-r-full py-1 px-4 bg-gray-100 cursor-pointer" >
                         <img className=" h-6" alt="searchbtn"
@@ -100,19 +118,11 @@ const Header = () => {
                     </button>
 
                 </div>
-                {showSuggestion && (<div className="fixed bg-white shadow-lg rounded-lg w-96 border border-gray-100">
-                    <ul>
-                        {suggestions?.map((s) =>
-                            <li key={s} className="px-5 py-1 hover:bg-gray-100 shadow-sm flex">
-                                <img alt="searchiconss" className="h-4 mt-1 mr-2"
-                                    src="https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png" /> {s}
-                            </li>
-                        )}
-
-
-                    </ul>
-                </div>)
-                }
+                <div>
+                    <SuggestionList storage={suggestions}/>
+                </div>
+                
+                
 
             </div>
             <div className="flex  col-span-1" >
@@ -124,4 +134,6 @@ const Header = () => {
 }
 
 export default Header;
+
+
 

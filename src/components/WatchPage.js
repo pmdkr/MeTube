@@ -30,20 +30,23 @@ const WatchPage = () => {
         <div className="flex flex-col w-full">
             <div className="px-5 flex">
                 <div>
-                <iframe width="740"
-                    height="396"
-                    className="rounded-2xl shadow-2xl ml-16"
-                    src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-                    title="Janiye Mashup | Jay Guldekar | Vishal Mishra Mashup | Naseeb Se"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen></iframe>
+                    <iframe width="740"
+                        height="396"
+                        className="rounded-2xl shadow-2xl ml-16"
+                        src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+                        title="Janiye Mashup | Jay Guldekar | Vishal Mishra Mashup | Naseeb Se"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen>
+
+                    </iframe>
+
 
                 </div>
                 <div className="w-full">
-                    <LiveChat/>
+                    <LiveChat />
                 </div>
-                
+
 
             </div>
             <CommentContainer />

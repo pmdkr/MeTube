@@ -8,6 +8,9 @@ const videoSlice=createSlice({
     reducers:{
         addVideos:(state,action)=>{
             state.videos.push(action.payload);
+        },
+        filterVideos:(state,action)=>{
+            state.videos.filter()
         }
     }
 
