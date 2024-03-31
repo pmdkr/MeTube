@@ -22,28 +22,28 @@ const CommentContainer = () => {
     const commentData = [
         {
             name: "Pramod Lohra",
-            text: "Lorem Ipsum is simply dummy text of the printing and",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
             replies: []
         },
         {
             name: "Pramod Lohra",
-            text: "Lorem Ipsum is simply dummy text of the printing and",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
             replies: [
                 {
                     name: "Pramod Lohra",
-                    text: "Lorem Ipsum is simply dummy text of the printing and",
+                    text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
                     replies: [
                         {
                             name: "Pramod Lohra",
-                            text: "Lorem Ipsum is simply dummy text of the printing and",
+                            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
                             replies: [
                                 {
                                     name: "Pramod Lohra",
-                                    text: "Lorem Ipsum is simply dummy text of the printing and",
+                                    text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
                                     replies: [
                                         {
                                             name: "Pramod Lohra",
-                                            text: "Lorem Ipsum is simply dummy text of the printing and",
+                                            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
                                             replies: []
                                         }
                                     ]
@@ -56,17 +56,17 @@ const CommentContainer = () => {
         },
         {
             name: "Pramod Lohra",
-            text: "Lorem Ipsum is simply dummy text of the printing and",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
             replies: []
         },
         {
             name: "Pramod Lohra",
-            text: "Lorem Ipsum is simply dummy text of the printing and",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
             replies: []
         },
         {
             name: "Pramod Lohra",
-            text: "Lorem Ipsum is simply dummy text of the printing and",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting...",
             replies: []
         }
     ]
