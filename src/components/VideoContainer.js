@@ -9,9 +9,9 @@ import { addVideos } from "../utils/videoSlice";
 const VideoContainer = () => {
     const dispatch = useDispatch();
     const key = process.env.REACT_APP_MY_API_KEY;
+    console.log(key);
     // const[videos, setVideos] = useState([]);
     const videos = useSelector((store) => store.video.videos);
-
 
     useEffect(() => {
         getVideos();
@@ -24,21 +24,18 @@ const VideoContainer = () => {
         const videolist = json.items;
         dispatch(addVideos({
             video: videolist,
-
-        }))
-
+        }));
     }
 
     return (
-        <div className="flex flex-wrap justify-center">
-            {
-                videos[0]?.video?.map((vid) => (
-                    <Link to={"/watch?v=" + vid.id} key={vid.id}>
-                        <VideoCard info={vid} />
-                    </Link>))
-            }
+        <div className="p-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {videos[0]?.video?.map((vid) => (
+                <Link to={"/watch?v=" + vid.id} key={vid.id} className="w-full">
+                    <VideoCard info={vid} />
+                </Link>
+            ))}
         </div>
-    )
+    );
 }
 
 export default VideoContainer;

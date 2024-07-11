@@ -4,55 +4,37 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 import LiveChat from "./LiveChat";
-// import { VIDEO_BY_ID } from "../utils/constants";
 
 const WatchPage = () => {
     const [searchParams] = useSearchParams();
-    // console.log(searchParams.get("v"));
-
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(closeMenu());
-        // getVideoById();
-    }, []);
-
-    // const getVideoById= async()=>{
-    //     const data = await fetch(MOST_POPULAR_VIDEOS);
-    //     const json =  await data.json();
-    //     console.log(json.items);
-
-
-    // };
+    }, [dispatch]);
 
     return (
         <div className="flex flex-col w-full">
-            <div className="px-5 flex">
-                <div>
-                    <iframe width="740"
-                        height="396"
-                        className="rounded-2xl shadow-2xl ml-16"
+            <div className="flex flex-col lg:flex-row px-5">
+                <div className="flex-1">
+                    <iframe
+                        className="w-full aspect-video rounded-2xl shadow-2xl"
                         src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-                        title="Janiye Mashup | Jay Guldekar | Vishal Mishra Mashup | Naseeb Se"
+                        title="Video Player"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen>
-
-                    </iframe>
-
-
+                        allowFullScreen
+                    ></iframe>
                 </div>
-                <div className="w-full">
+                <div className="flex-1 lg:ml-5 mt-5 lg:mt-0">
                     <LiveChat />
                 </div>
-
-
             </div>
-            <CommentContainer />
-
+            <div className="mt-5 px-5">
+                <CommentContainer />
+            </div>
         </div>
+    );
+};
 
-    )
-}
 export default WatchPage;
